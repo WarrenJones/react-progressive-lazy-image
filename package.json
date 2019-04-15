@@ -1,0 +1,39 @@
+{
+  "name": "react-progressive-lazy-image",
+  "version": "1.0.0",
+  "description": "a lazy-load image component for react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarrenJones/react-progressive-lazy-image.git"
+  },
+  "author": "unclewarren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarrenJones/react-progressive-lazy-image/issues"
+  },
+  "homepage": "https://github.com/WarrenJones/react-progressive-lazy-image#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "intersection-observer-polyfill": "^0.1.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
+}
