@@ -5,25 +5,6 @@ import PropTypes from "prop-types";
 //这是intersection的polyfill
 import IntersectionObserver from 'intersection-observer-polyfill'
 export default class ProgressiveLazyImage extends React.Component {
-  static propTypes = {
-    src: PropTypes.string.isRequired,
-    //默认图片占位
-    placeholder: PropTypes.object.isRequired,
-    delay: PropTypes.number,
-    className: PropTypes.string,
-    //在viewport里面才加载
-    needLazyUtilInViewPort: PropTypes.bool,
-    //目前是否可以马上加载,用于漫画列表加载时候的判断
-    canLoadRightNow: PropTypes.bool,
-    id: PropTypes.number,
-    loaded: PropTypes.func,
-    onImageClick: PropTypes.func
-  };
-  static defaultProps = {
-    needLazyUtilInViewPort: true,
-    canLoadRightNow: true
-  };
-
   constructor(props) {
     super(...arguments);
     this.state = this._getInitialState(props);
@@ -155,3 +136,23 @@ export default class ProgressiveLazyImage extends React.Component {
     );
   }
 }
+
+ProgressiveLazyImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  //默认图片占位
+  placeholder: PropTypes.object.isRequired,
+  delay: PropTypes.number,
+  className: PropTypes.string,
+  //在viewport里面才加载
+  needLazyUtilInViewPort: PropTypes.bool,
+  //目前是否可以马上加载,用于漫画列表加载时候的判断
+  canLoadRightNow: PropTypes.bool,
+  id: PropTypes.number,
+  loaded: PropTypes.func,
+  onImageClick: PropTypes.func
+};
+
+ProgressiveLazyImage.defaultProps = {
+  needLazyUtilInViewPort: true,
+  canLoadRightNow: true
+};
