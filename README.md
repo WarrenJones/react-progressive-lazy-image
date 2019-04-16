@@ -21,7 +21,7 @@ image list shows in order.
 
 ## Installation
 
-> 2.0.0 is finally out, read [Upgrade Guide](https://github.com/twobin/react-lazyload/wiki/Upgrade-Guide), it's almost painless to upgrade!
+> 2.0.0 is finally out,  it's almost painless to upgrade!
 
 ```
 $ npm install --save react-progressive-lazy-image
