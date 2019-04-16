@@ -1,4 +1,2 @@
 import ProgressiveLazyImage from "./components/ProgressiveLazyImage";
-module.exports={
-  ProgressiveLazyImage
-}
+export default ProgressiveLazyImage;
