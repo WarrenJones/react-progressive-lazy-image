@@ -2,10 +2,12 @@
 
 ### senario1
 image-lazyload with placeholder.
+
 ![](https://res.unclewarren.cn/scenario1.gif)
 
 ### sernario2
 image list shows in order.
+
 ![](https://res.unclewarren.cn/scenario2.gif)
 
 ----
