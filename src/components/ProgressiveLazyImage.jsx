@@ -19,7 +19,8 @@ export default class ProgressiveLazyImage extends React.Component {
     return {
       loading: true,
       error: false,
-      showingImage: ""
+      showingImage: "",
+      alreadyLoaded:false,
     };
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -31,7 +32,7 @@ export default class ProgressiveLazyImage extends React.Component {
   insideViewportCb(entries) {
     entries.forEach(element => {
       //在viewport里面
-      if (element.intersectionRatio >0) {
+      if (element.intersectionRatio >0&&!this.state.alreadyLoaded) {
         this.loadImage(this.props.src);
       }
     });
@@ -116,6 +117,7 @@ export default class ProgressiveLazyImage extends React.Component {
     this.setState(
       {
         showingImage: this.image.src,
+        alreadyLoaded:true,
         loading: false
       },
       () => {
