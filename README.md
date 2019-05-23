@@ -23,7 +23,7 @@ image list shows in order.
 
 ## Installation
 
-> 2.0.0 is finally out,  it's almost painless to upgrade!
+> 1.0.5 is finally out,  it's almost painless to upgrade!
 
 ```
 $ npm install --save react-progressive-lazy-image
