@@ -57,7 +57,8 @@ var ProgressiveLazyImage = function (_React$Component) {
       return {
         loading: true,
         error: false,
-        showingImage: ""
+        showingImage: "",
+        alreadyLoaded: false
       };
     }
   }, {
@@ -74,7 +75,7 @@ var ProgressiveLazyImage = function (_React$Component) {
 
       entries.forEach(function (element) {
         //在viewport里面
-        if (element.intersectionRatio > 0) {
+        if (element.intersectionRatio > 0 && !_this2.state.alreadyLoaded) {
           _this2.loadImage(_this2.props.src);
         }
       });
@@ -180,6 +181,7 @@ var ProgressiveLazyImage = function (_React$Component) {
       // this.props.
       this.setState({
         showingImage: this.image.src,
+        alreadyLoaded: true,
         loading: false
       }, function () {
         if (_this6.props.loaded) {

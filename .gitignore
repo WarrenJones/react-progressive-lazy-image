@@ -4,3 +4,4 @@ examples
 .babelrc
 .gitignore
 webpack.config.js
+.package-lock.json
