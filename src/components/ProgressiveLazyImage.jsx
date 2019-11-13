@@ -130,11 +130,11 @@ export default class ProgressiveLazyImage extends React.Component {
 
   render() {
     const { showingImage, loading, error } = this.state;
-    const { placeholder, className, onImageClick } = this.props;
+    const { placeholder, className, onImageClick,onError } = this.props;
     return loading || error ? (
       placeholder
     ) : (
-      <img className={className} src={showingImage} onClick={onImageClick} />
+      <img className={className} src={showingImage} onClick={onImageClick} onError={onError}/>
     );
   }
 }
@@ -151,7 +151,8 @@ ProgressiveLazyImage.propTypes = {
   canLoadRightNow: PropTypes.bool,
   id: PropTypes.number,
   loaded: PropTypes.func,
-  onImageClick: PropTypes.func
+  onImageClick: PropTypes.func,
+  onError:PropTypes.func,
 };
 
 ProgressiveLazyImage.defaultProps = {

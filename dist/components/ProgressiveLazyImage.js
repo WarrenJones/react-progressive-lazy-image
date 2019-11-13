@@ -3,51 +3,54 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = void 0;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _react = _interopRequireDefault(require("react"));
 
-var _react = require("react");
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _react2 = _interopRequireDefault(_react);
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactDom = require("react-dom");
+var _intersectionObserverPolyfill = _interopRequireDefault(require("intersection-observer-polyfill"));
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _propTypes = require("prop-types");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _intersectionObserverPolyfill = require("intersection-observer-polyfill");
-
-var _intersectionObserverPolyfill2 = _interopRequireDefault(_intersectionObserverPolyfill);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //inspirations from https://github.com/FormidableLabs/react-progressive-image
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-//这是intersection的polyfill
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ProgressiveLazyImage = function (_React$Component) {
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ProgressiveLazyImage =
+/*#__PURE__*/
+function (_React$Component) {
   _inherits(ProgressiveLazyImage, _React$Component);
 
   function ProgressiveLazyImage(props) {
+    var _this;
+
     _classCallCheck(this, ProgressiveLazyImage);
 
-    var _this = _possibleConstructorReturn(this, (ProgressiveLazyImage.__proto__ || Object.getPrototypeOf(ProgressiveLazyImage)).apply(this, arguments));
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProgressiveLazyImage).apply(this, arguments));
     _this.state = _this._getInitialState(props);
-    _this.loadImage = _this.loadImage.bind(_this);
-    _this.onLoad = _this.onLoad.bind(_this);
-    _this.setImageWithDelay = _this.setImageWithDelay.bind(_this);
-    _this.setImage = _this.setImage.bind(_this);
-    // this.checkAndLoad = this.checkAndLoad.bind(this);
-    _this.insideViewportCb = _this.insideViewportCb.bind(_this);
+    _this.loadImage = _this.loadImage.bind(_assertThisInitialized(_this));
+    _this.onLoad = _this.onLoad.bind(_assertThisInitialized(_this));
+    _this.setImageWithDelay = _this.setImageWithDelay.bind(_assertThisInitialized(_this));
+    _this.setImage = _this.setImage.bind(_assertThisInitialized(_this)); // this.checkAndLoad = this.checkAndLoad.bind(this);
+
+    _this.insideViewportCb = _this.insideViewportCb.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -83,16 +86,17 @@ var ProgressiveLazyImage = function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _props = this.props,
-          src = _props.src,
-          needLazyUtilInViewPort = _props.needLazyUtilInViewPort,
-          canLoadRightNow = _props.canLoadRightNow;
+      var _this$props = this.props,
+          src = _this$props.src,
+          needLazyUtilInViewPort = _this$props.needLazyUtilInViewPort,
+          canLoadRightNow = _this$props.canLoadRightNow;
 
       if (needLazyUtilInViewPort) {
         //https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
         try {
-          var node = _reactDom2.default.findDOMNode(this);
-          this.observer = new _intersectionObserverPolyfill2.default(this.insideViewportCb);
+          var node = _reactDom["default"].findDOMNode(this);
+
+          this.observer = new _intersectionObserverPolyfill["default"](this.insideViewportCb);
           this.observer.observe(node);
         } catch (err) {
           console.log("err in finding node", err);
@@ -108,11 +112,12 @@ var ProgressiveLazyImage = function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       var _this3 = this;
 
-      var src = this.props.src;
-      // We only invalidate the current image if the src has changed.
+      var src = this.props.src; // We only invalidate the current image if the src has changed.
 
       if (src !== prevProps.src) {
-        this.setState({ loading: true }, function () {
+        this.setState({
+          loading: true
+        }, function () {
           _this3.loadImage(src);
         });
       }
@@ -129,13 +134,19 @@ var ProgressiveLazyImage = function (_React$Component) {
         this.image.onload = null;
         this.image.onerror = null;
       }
+
       var image = new Image();
       this.image = image;
       image.onload = this.onLoad;
+
       image.onerror = function (e) {
         console.error("image on error", e);
-        _this4.setState({ error: true });
+
+        _this4.setState({
+          error: true
+        });
       };
+
       image.src = src;
     }
   }, {
@@ -145,9 +156,11 @@ var ProgressiveLazyImage = function (_React$Component) {
         this.image.onload = null;
         this.image.onerror = null;
       }
+
       if (this.delayTask) {
         clearTimeout(this.delayTask);
       }
+
       if (this.observer) {
         this.observer = null;
       }
@@ -192,40 +205,43 @@ var ProgressiveLazyImage = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _state = this.state,
-          showingImage = _state.showingImage,
-          loading = _state.loading,
-          error = _state.error;
-      var _props2 = this.props,
-          placeholder = _props2.placeholder,
-          className = _props2.className,
-          onImageClick = _props2.onImageClick;
-
-      return loading || error ? placeholder : _react2.default.createElement("img", { className: className, src: showingImage, onClick: onImageClick });
+      var _this$state = this.state,
+          showingImage = _this$state.showingImage,
+          loading = _this$state.loading,
+          error = _this$state.error;
+      var _this$props2 = this.props,
+          placeholder = _this$props2.placeholder,
+          className = _this$props2.className,
+          onImageClick = _this$props2.onImageClick,
+          onError = _this$props2.onError;
+      return loading || error ? placeholder : _react["default"].createElement("img", {
+        className: className,
+        src: showingImage,
+        onClick: onImageClick,
+        onError: onError
+      });
     }
   }]);
 
   return ProgressiveLazyImage;
-}(_react2.default.Component);
+}(_react["default"].Component);
 
-exports.default = ProgressiveLazyImage;
-
-
+exports["default"] = ProgressiveLazyImage;
 ProgressiveLazyImage.propTypes = {
-  src: _propTypes2.default.string.isRequired,
+  src: _propTypes["default"].string.isRequired,
   //默认图片占位
-  placeholder: _propTypes2.default.object.isRequired,
-  delay: _propTypes2.default.number,
-  className: _propTypes2.default.string,
+  placeholder: _propTypes["default"].object.isRequired,
+  delay: _propTypes["default"].number,
+  className: _propTypes["default"].string,
   //在viewport里面才加载
-  needLazyUtilInViewPort: _propTypes2.default.bool,
+  needLazyUtilInViewPort: _propTypes["default"].bool,
   //目前是否可以马上加载,用于漫画列表加载时候的判断
-  canLoadRightNow: _propTypes2.default.bool,
-  id: _propTypes2.default.number,
-  loaded: _propTypes2.default.func,
-  onImageClick: _propTypes2.default.func
+  canLoadRightNow: _propTypes["default"].bool,
+  id: _propTypes["default"].number,
+  loaded: _propTypes["default"].func,
+  onImageClick: _propTypes["default"].func,
+  onError: _propTypes["default"].func
 };
-
 ProgressiveLazyImage.defaultProps = {
   needLazyUtilInViewPort: true,
   canLoadRightNow: true

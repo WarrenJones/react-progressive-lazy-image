@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = void 0;
 
-var _ProgressiveLazyImage = require("./components/ProgressiveLazyImage");
+var _ProgressiveLazyImage = _interopRequireDefault(require("./components/ProgressiveLazyImage"));
 
-var _ProgressiveLazyImage2 = _interopRequireDefault(_ProgressiveLazyImage);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _ProgressiveLazyImage2.default;
+var _default = _ProgressiveLazyImage["default"];
+exports["default"] = _default;

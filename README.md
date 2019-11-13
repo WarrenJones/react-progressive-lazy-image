@@ -95,7 +95,8 @@ static propTypes = {
     //when the image loaded successfully
     loaded: PropTypes.func,
     //onImageClick
-    onImageClick: PropTypes.func
+    onImageClick: PropTypes.func,
+    onError:PropTypes.func,
   };
   
   static defaultProps = {
